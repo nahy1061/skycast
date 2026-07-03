@@ -1,17 +1,12 @@
-import React from "react";
-import { fetchWeatherByCity } from "./services/weatherApi";
+import React from 'react'
+import Home from './pages/Home'
 
 const App = () => {
-  const getWeatherDetails = async () => {
-    const data = await fetchWeatherByCity("Rawalpindi");
-    console.log(data);
-  };
-
   return (
     <div>
-      <button onClick={getWeatherDetails} className="bg-green-400 rounded-2xl p-4">Get Data</button>
+      <Home/>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App
