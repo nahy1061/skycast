@@ -5,9 +5,10 @@ import SearchBar from "../components/SearchBar";
 import Header from "../components/Header";
 import Loading from "../components/Loading";
 import ErrorMessage from "../components/ErrorMessage";
+import FiveDayForecast from "../components/FiveDayForecast";
 
 const Home = () => {
-  const [uiData, setUiData] = useState(null);
+  const [weatherData, setWeatherData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -16,7 +17,7 @@ const Home = () => {
     setError(null);
     try {
       const response = await fetchWeatherByCity(city);
-      setUiData(response);
+      setWeatherData(response);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -29,44 +30,32 @@ const Home = () => {
   }, []);
 
   const renderContent = () => {
-  if (isLoading) return <Loading />;
-  if (error) return <ErrorMessage message={error} />;
-  if (uiData) return (
-    <WeatherCard
-      name={uiData.name}
-      country={uiData.country}
-      current={uiData.current}
-    />
-  );
-  return null;
-};
+    if (isLoading) return <Loading />;
+    if (error) return <ErrorMessage message={error} />;
+    if (weatherData)
+      return (
+        <>
+          <WeatherCard
+            name={weatherData.name}
+            country={weatherData.country}
+            current={weatherData.current}
+          />
+          <FiveDayForecast daily={weatherData.daily} />
+        </>
+      );
+    return null;
+  };
 
   return (
-    <main className="max-w-xl mx-auto px-4 py-6 sm:py-8 space-y-6">
+    // <div className="min-h-screen bg-linear-to-br from-blue-100 via-slate-100 to-slate-200">
+    <div className="min-h-screen bg-linear-to-br from-[#042C53] via-[#185FA5] to-[#378ADD]">
       <Header />
-      <SearchBar onSearch={getWeatherDetails} />
-      {renderContent()}
-    </main>
+      <main className="max-w-xl mx-auto px-4 py-6 sm:py-8 space-y-6">
+        <SearchBar onSearch={getWeatherDetails} />
+        {renderContent()}
+      </main>
+    </div>
   );
 };
 
 export default Home;
-
-//  {/* Testing Weather Info */}
-//     <button
-//       onClick={() => {
-//         let information = getWeatherInfo(66, true);
-//         console.log(information);
-//         setInfo(information);
-//       }}
-//       className="bg-pink-400 rounded-2xl p-3 m-2"
-//     >
-//       Weather Info
-//     </button>
-
-//     {info && (
-//       <div>
-//         <p>{info.description}</p>
-//         <img src={info.image} alt="weather" />
-//       </div>
-//     )}

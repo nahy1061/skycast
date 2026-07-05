@@ -5,17 +5,20 @@ function SearchBar({ onSearch }) {
   const [city, setCity] = useState("");
   const [inputError, setInputError] = useState("");
 
-   const handleChange = (e) => {
+  const handleChange = (e) => {
     setCity(e.target.value);
     if (inputError) setInputError(""); // clear error as soon as they start typing again
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-     if (city.trim() === "") {
+
+    // Empty Search
+    if (city.trim() === "") {
       setInputError("Please enter a city name.");
       return;
     }
+
     setInputError("");
     onSearch(city);
     setCity("");
@@ -36,7 +39,7 @@ function SearchBar({ onSearch }) {
         />
         <button
           type="submit"
-          className="shrink-0 bg-blue-600 hover:bg-blue-700 text-white text-sm sm:text-base font-medium px-4 sm:px-5 py-1.5 sm:py-2 rounded-full transition-colors"
+          className="shrink-0 bg-linear-to-r from-[#185FA5] to-[#378ADD] hover:from-[#0C447C] hover:to-[#185FA5] text-white text-sm sm:text-base font-medium px-4 sm:px-5 py-1.5 sm:py-2 rounded-full transition-all"
         >
           Search
         </button>
