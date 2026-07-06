@@ -1,0 +1,151 @@
+/* ===== SKYCAST THEME SYSTEM ===== */
+
+/* Light Mode (Default) */
+:root {
+  /* Backgrounds */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f0f9ff;
+  --bg-tertiary: #e0f2fe;
+
+  /* Text Colors */
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-tertiary: #64748b;
+
+  /* Accent Colors */
+  --accent-primary: #0284c7;
+  --accent-secondary: #0369a1;
+  --accent-light: #38bdf8;
+
+  /* Borders */
+  --border-primary: #bfdbfe;
+  --border-secondary: #e0e7ff;
+
+  /* UI Elements */
+  --input-bg: #ffffff;
+  --input-border: #cbd5e1;
+  --input-text: #1e293b;
+
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --card-border: #bfdbfe;
+}
+
+/* Dark Mode */
+[data-theme="dark"],
+.dark {
+  /* Backgrounds - Deep with subtle blue hints */
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e3a5f;
+  --bg-tertiary: #1e293b;
+
+  /* Text Colors - Blue-tinted grays instead of pure gray */
+  --text-primary: #e0f2fe;
+  --text-secondary: #bae6fd;
+  --text-tertiary: #7dd3fc;
+
+  /* Accent Colors - Vibrant blues and cyans */
+  --accent-primary: #06b6d4;
+  --accent-secondary: #0ea5e9;
+  --accent-light: #38bdf8;
+
+  /* Borders - Blue tinted */
+  --border-primary: #164e63;
+  --border-secondary: #1e3a8a;
+
+  /* UI Elements */
+  --input-bg: rgba(30, 58, 95, 0.5);
+  --input-border: #0c4a6e;
+  --input-text: #e0f2fe;
+
+  --card-bg: rgba(15, 23, 42, 0.8);
+  --card-border: #164e63;
+}
+
+/* ===== COMPONENT-SPECIFIC THEMES ===== */
+
+/* Header Theme */
+:root {
+  --header-bg: #ffffff;
+  --header-border: #e2e8f0;
+  --header-text: #0f172a;
+}
+
+[data-theme="dark"],
+.dark {
+  --header-bg: #1e293b;
+  --header-border: #334155;
+  --header-text: #e0f2fe;
+}
+
+/* SearchBar Theme */
+:root {
+  --search-bg: #ffffff;
+  --search-border: #cbd5e1;
+  --search-text: #1e293b;
+  --search-placeholder: #94a3b8;
+}
+
+[data-theme="dark"],
+.dark {
+  --search-bg: rgba(30, 58, 95, 0.5);
+  --search-border: #0c4a6e;
+  --search-text: #e0f2fe;
+  --search-placeholder: #64748b;
+}
+
+/* Card Theme */
+:root {
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --card-border: #bfdbfe;
+  --card-text: #0f172a;
+}
+
+[data-theme="dark"],
+.dark {
+  --card-bg: rgba(15, 23, 42, 0.7);
+  --card-border: #164e63;
+  --card-text: #e0f2fe;
+}
+
+/* Footer Theme */
+:root {
+  --footer-bg: #f8fafc;
+  --footer-border: #e2e8f0;
+  --footer-text: #475569;
+}
+
+[data-theme="dark"],
+.dark {
+  --footer-bg: #1e293b;
+  --footer-border: #334155;
+  --footer-text: #cbd5e1;
+}
+
+/* Forecast Theme */
+:root {
+  --forecast-bg: #eff6ff;
+  --forecast-card-bg: #ffffff;
+  --forecast-border: #bfdbfe;
+}
+
+[data-theme="dark"],
+.dark {
+  --forecast-bg: rgba(30, 58, 95, 0.3);
+  --forecast-card-bg: rgba(30, 58, 95, 0.6);
+  --forecast-border: #0c4a6e;
+}
+
+/* Utility Animations */
+@keyframes subtle-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(6, 182, 212, 0.1);
+  }
+}
+
+.glow-effect {
+  animation: subtle-glow 3s infinite;
+}

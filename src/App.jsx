@@ -1,17 +1,21 @@
-import React from 'react'
-import Home from './pages/Home'
-import { ThemeProvider } from './components/ThemeContext'
+import React from "react";
+import Home from "./pages/Home";
+import { ThemeProvider } from "./components/ThemeContext";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
-    <div className="min-h-screen bg-transparent text-slate-100">
-      <div className="app-container">
-        <ThemeProvider>
+    <ThemeProvider>
+      <div className="min-h-screen flex flex-col">
+        <div className="app-container flex flex-col flex-1">
+          <Header />
           <Home />
-        </ThemeProvider>
+          <Footer />
+        </div>
       </div>
-    </div>
-  )
-}
+    </ThemeProvider>
+  );
+};
 
-export default App
+export default App;

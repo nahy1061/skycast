@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useTheme } from "./ThemeContext";
 
 function SearchBar({ onSearch }) {
+  const { isDark } = useTheme();
   const [city, setCity] = useState("");
 
   const handleChange = (e) => {
@@ -12,7 +14,7 @@ function SearchBar({ onSearch }) {
     onSearch(city);
 
     if (city.trim() !== "") {
-    setCity("");
+      setCity("");
     }
   };
 
@@ -20,14 +22,22 @@ function SearchBar({ onSearch }) {
     <div className="w-full">
       <form
         onSubmit={handleSubmit}
-        className="w-full flex items-center gap-2 bg-white border border-slate-200 rounded-full shadow-sm px-2 py-1.5 sm:px-3 sm:py-2"
+        className={`w-full flex items-center gap-2 rounded-full shadow-md px-2 py-1.5 sm:px-3 sm:py-2 transition-all duration-300 ${
+          isDark
+            ? "bg-slate-800/50 border border-blue-700/30 backdrop-blur-sm hover:border-blue-600/50"
+            : "bg-white border border-slate-200"
+        }`}
       >
         <input
           type="text"
           value={city}
           onChange={handleChange}
           placeholder="Search for a city"
-          className="flex-1 min-w-0 bg-transparent px-2 sm:px-3 py-1.5 text-sm sm:text-base text-slate-700 placeholder-slate-400 focus:outline-none"
+          className={`flex-1 min-w-0 bg-transparent px-2 sm:px-3 py-1.5 text-sm sm:text-base focus:outline-none transition-colors duration-300 ${
+            isDark
+              ? "text-cyan-100 placeholder-blue-400/50"
+              : "text-slate-700 placeholder-slate-400"
+          }`}
         />
         <button
           type="submit"

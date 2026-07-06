@@ -1,12 +1,14 @@
-import logo from "../assets/logo/sky_cast_logo.png";
-import { useState } from "react";
+import logo from "../assets/logo/sky_cast_logo-bg-removed.png";
 import ThemeToggle from "./ThemeToggle";
+import { useTheme } from "./ThemeContext";
 
 function Header() {
-  const [isDark, setIsDark] = useState(false);
+  const { isDark } = useTheme();
 
   return (
-    <header className="w-full bg-white border-b border-slate-200">
+    <header
+      className={`w-full transition-colors duration-300 ${isDark ? "bg-linear-to-r from-slate-800 via-blue-900/10 to-slate-800 border-b border-blue-900/30 shadow-lg" : "bg-white border-b border-slate-200"}`}
+    >
       <div className="max-w-5xl mx-auto flex items-center justify-between px-4 py-3 sm:py-4">
         <div className="flex items-center gap-3 sm:gap-4">
           <img
@@ -15,11 +17,13 @@ function Header() {
             className="h-14 w-14 sm:h-16 sm:w-16 object-contain"
           />
           <div className="flex flex-col">
-            <h1 className="text-xl sm:text-2xl font-bold text-slate-800 tracking-tight">
+            <h1
+              className={`text-xl sm:text-2xl font-bold tracking-tight transition-colors duration-300 ${isDark ? "text-cyan-100" : "text-slate-800"}`}
+            >
               SkyCast
             </h1>
             <p
-              className="text-xs sm:text-sm text-slate-400 tracking-wide"
+              className={`text-xs sm:text-sm tracking-wide transition-colors duration-300 ${isDark ? "text-blue-300/70" : "text-slate-400"}`}
               style={{ fontFamily: "'Quicksand', sans-serif" }}
             >
               Know before you go
