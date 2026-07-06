@@ -8,8 +8,13 @@ const Footer = () => {
 
   return (
     <footer
-      className={`transition-colors duration-300 ${isDark ? "bg-slate-950 border-t border-blue-900/20" : "bg-slate-50 border-t border-blue-200"}`}
+      className={`transition-colors duration-300 ${
+        isDark
+          ? "bg-slate-900/90 backdrop-blur-sm border-t border-blue-900/30 shadow-lg shadow-black/20"
+          : "bg-slate-50 border-t border-blue-200"
+      }`}
     >
+  
       {/* SIZING OPTIONS: Adjust py-4 (compact), py-6 (standard), py-10 (spacious) */}
       <div className="max-w-6xl mx-auto px-4 py-4 sm:py-5 md:py-6">
         {/* Main Content - Fully Responsive */}
@@ -69,10 +74,10 @@ const Footer = () => {
         <div
           className={`text-center text-xs transition-colors duration-300 ${isDark ? "text-blue-300/50" : "text-slate-600"}`}
         >
-          <p>
-            © {currentYear} SkyCast. All rights reserved. Made with ❤️ for
-            weather lovers
+          <div className="flex flex-col gap-2">
+            <p> © {currentYear} SkyCast. All rights reserved.
           </p>
+          </div>
         </div>
       </div>
     </footer>

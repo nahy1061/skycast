@@ -1,4 +1,4 @@
-import logo from "../assets/logo/sky_cast_logo-bg-removed.png";
+import logo from "../assets/logo/sky_cast_logo.png";
 import ThemeToggle from "./ThemeToggle";
 import { useTheme } from "./ThemeContext";
 
@@ -7,7 +7,11 @@ function Header() {
 
   return (
     <header
-      className={`w-full transition-colors duration-300 ${isDark ? "bg-linear-to-r from-slate-800 via-blue-900/10 to-slate-800 border-b border-blue-900/30 shadow-lg" : "bg-white border-b border-slate-200"}`}
+      className={`w-full transition-colors duration-300 ${
+        isDark
+          ? "bg-slate-900/90 backdrop-blur-sm border-b border-blue-900/30 shadow-lg shadow-black/20"
+          : "bg-white border-b border-slate-200"
+      }`}
     >
       <div className="max-w-5xl mx-auto flex items-center justify-between px-4 py-3 sm:py-4">
         <div className="flex items-center gap-3 sm:gap-4">
