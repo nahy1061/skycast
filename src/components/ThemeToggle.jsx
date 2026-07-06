@@ -1,12 +1,11 @@
-// components/ThemeToggle/ThemeToggle.jsx
-import { useState } from "react";
+import { useTheme } from "./ThemeContext";
 
 function ThemeToggle() {
-  const [isDark, setIsDark] = useState(false);
+  const { isDark, toggleTheme } = useTheme(); // Use the context value and toggle function
 
   return (
     <button
-      onClick={() => setIsDark(!isDark)}
+      onClick={toggleTheme}
       aria-label="Toggle dark mode"
       className={`relative w-14 h-8 sm:w-16 sm:h-9 rounded-full transition-colors duration-300 flex items-center px-1 ${
         isDark ? "bg-slate-700" : "bg-blue-400"

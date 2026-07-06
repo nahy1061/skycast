@@ -11,7 +11,7 @@ function WeatherCard({ name, country, current }) {
     is_day,
   } = current;
 
-  const { description, image } = getWeatherInfo(weather_code, is_day);
+  const { description, icon: WeatherIcon } = getWeatherInfo(weather_code, is_day);
 
   return (
     <div className="max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl ring-1 ring-blue-100 p-5 sm:p-6 md:p-8 text-slate-800">
@@ -29,12 +29,8 @@ function WeatherCard({ name, country, current }) {
             Feels like {apparent_temperature.toFixed(1)}°C
           </p>
         </div>
-        <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-blue-200 rounded-full flex items-center justify-center shrink-0">
-          <img
-            src={image}
-            alt={description}
-            className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain"
-          />
+        <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-blue-100 rounded-full flex items-center justify-center shrink-0">
+          <WeatherIcon className="w-14 h-14 sm:w-16 sm:h-16 text-blue-500" />
         </div>
       </div>
 
