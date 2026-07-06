@@ -1,27 +1,19 @@
 import { useState } from "react";
-import ErrorMessage from "./ErrorMessage";
 
 function SearchBar({ onSearch }) {
   const [city, setCity] = useState("");
-  const [inputError, setInputError] = useState("");
 
   const handleChange = (e) => {
     setCity(e.target.value);
-    if (inputError) setInputError(""); // clear error as soon as they start typing again
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Empty Search
-    if (city.trim() === "") {
-      setInputError("Please enter a city name.");
-      return;
-    }
-
-    setInputError("");
     onSearch(city);
+
+    if (city.trim() !== "") {
     setCity("");
+    }
   };
 
   return (
@@ -44,12 +36,6 @@ function SearchBar({ onSearch }) {
           Search
         </button>
       </form>
-
-      {inputError && (
-        <div className="mt-2">
-          <ErrorMessage message={inputError} />
-        </div>
-      )}
     </div>
   );
 }

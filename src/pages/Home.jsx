@@ -6,18 +6,27 @@ import Header from "../components/Header";
 import Loading from "../components/Loading";
 import ErrorMessage from "../components/ErrorMessage";
 import FiveDayForecast from "../components/FiveDayForecast";
+import { getRecentSearches, addRecentSearch } from "../utils/recentSearches";
+import RecentSearches from "../components/RecentSearches";
 
 const Home = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [recentSearches, setRecentSearches] = useState([]);
 
   const getWeatherDetails = async (city) => {
+    if(!city || city.trim()==="") {
+      setError("Please enter a city name.");
+      return;
+    }
+    
     setIsLoading(true);
     setError(null);
     try {
       const response = await fetchWeatherByCity(city);
       setWeatherData(response);
+      setRecentSearches(addRecentSearch(city)); // Update recent searches after a successful fetch
     } catch (err) {
       setError(err.message);
     } finally {
@@ -26,6 +35,7 @@ const Home = () => {
   };
 
   useEffect(() => {
+    setRecentSearches(getRecentSearches());
     getWeatherDetails("Rawalpindi");
   }, []);
 
@@ -52,6 +62,7 @@ const Home = () => {
       <Header />
       <main className="max-w-xl mx-auto px-4 py-6 sm:py-8 space-y-6">
         <SearchBar onSearch={getWeatherDetails} />
+        <RecentSearches searches={recentSearches} onSelect={getWeatherDetails} />
         {renderContent()}
       </main>
     </div>
