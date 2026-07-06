@@ -29,7 +29,7 @@ function WeatherCard({ name, country, current }) {
             Feels like {apparent_temperature.toFixed(1)}°C
           </p>
         </div>
-        <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-blue-50 rounded-full flex items-center justify-center flex-shrink-0">
+        <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-blue-200 rounded-full flex items-center justify-center shrink-0">
           <img
             src={image}
             alt={description}
