@@ -8,7 +8,7 @@ const FiveDayForecast = ({ daily }) => {
   return (
     <div
       className={`bg-linear-to-br rounded-2xl p-4 sm:p-5 transition-colors duration-300 ${
-        isDark ? "bg-slate-800/50 border border-blue-700/20" : "bg-slate-50"
+        isDark ? "bg-slate-800/50 border border-blue-700/20" : "bg-white/60"
       }`}
     >
       <p

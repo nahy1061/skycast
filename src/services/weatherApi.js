@@ -22,13 +22,13 @@ if (!data.results || data.results.length === 0)
 
 export async function getWeather(latitude, longitude) {
   // build the forecast URL using latitude, longitude, and the current/daily params
-  let response = await fetch(`${FORECAST_URL}?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m,is_day,surface_pressure,weather_code&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max,weather_code,sunrise,sunset&timezone=auto`);
+  let response = await fetch(`${FORECAST_URL}?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m,is_day,surface_pressure,weather_code&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max,weather_code,sunrise,sunset&hourly=temperature_2m,weather_code,precipitation_probability,is_day&timezone=auto`);
 
   // fetch it, parse JSON
   let data = await response.json();
 
   // return the data (or just the parts you need: data.current and data.daily)
-  return [data.current, data.daily];
+  return [data.current, data.daily, data.hourly];
 }
 
 // 3. Combines both — this is what your component will actually call
@@ -38,8 +38,8 @@ export async function fetchWeatherByCity(city) {
     const { latitude, longitude, name, country } = await getCoordinates(city);
 
   // call getWeather() using the lat/lon you got back
-    const [current, daily] = await getWeather(latitude, longitude);
+    const [current, daily, hourly] = await getWeather(latitude, longitude);
 
   // return everything the UI needs: city name, country, current, daily
-    return { name, country, current, daily };
+    return { name, country, current, daily, hourly };
 }

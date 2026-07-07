@@ -9,7 +9,7 @@ import { getRecentSearches, addRecentSearch } from "../utils/recentSearches";
 import RecentSearches from "../components/RecentSearches";
 import { useTheme } from "../components/ThemeContext"; // Import the useTheme hook
 import CloudAnimation from "../components/CloudAnimation";
-// import starrySky from "../assets/images/starry-sky-rotated.jpg";
+import HourlyForecast from "../components/HourlyForecast";
 
 const Home = () => {
   const { isDark } = useTheme(); // Use the theme context to apply the current theme
@@ -57,6 +57,7 @@ const Home = () => {
             country={weatherData.country}
             current={weatherData.current}
           />
+          <HourlyForecast hourly={weatherData.hourly} currentTime={weatherData.current.time} />
           <FiveDayForecast daily={weatherData.daily} />
         </>
       );
