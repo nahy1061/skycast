@@ -1,13 +1,29 @@
 # 🌤️ SkyCast — Know Before You Go
 
-A modern, responsive weather dashboard built with React. Search any city to see current conditions and a 5-day forecast, with dark mode, recent searches, and a bit of visual flair.
+A modern, responsive weather dashboard built with React. Search any city to see current conditions, an hourly forecast, and a 5-day outlook — with dark mode, recent searches, and a bit of visual flair.
+
+🔗 **Live Demo:** [skycast-bay.vercel.app](https://skycast-bay.vercel.app/)
+📦 **Repository:** [github.com/nahy1061/skycast](https://github.com/nahy1061/skycast)
 
 ---
 
-##  Features
+## Screenshots
+
+<!-- Add your screenshots below -->
+
+### Light Mode
+![SkyCast Light Mode](src\assets\screenshots\skycast-light-mode.png)
+
+### Dark Mode
+![SkyCast Dark Mode](src\assets\screenshots\skycast-dark-mode.png)
+
+---
+
+## Features
 
 -  **City Search** — search any city by name, with friendly error handling for invalid names and empty input
 -  **Current Weather** — temperature, feels-like, humidity, wind speed, and pressure
+-  **Hourly Forecast** — next 12 hours starting from the current time, with per-hour temperature, weather icon, and accurate day/night icon switching
 -  **5-Day Forecast** — daily high/low temperatures with weather icons
 -  **Recent Searches** — last 5 searched cities saved via Local Storage, no duplicates, click to reload
 -  **Dark / Light Mode** — theme toggle with a sliding switch, persisted across sessions
@@ -17,14 +33,15 @@ A modern, responsive weather dashboard built with React. Search any city to see 
 
 ---
 
-##  Tech Stack
+## Tech Stack
 
 - **React 19** (with Hooks & Context API)
 - **Vite** — build tool and dev server
 - **Tailwind CSS 4** — utility-first styling
-- **react-icons** — weather icon set (`react-icons/wi`)
+- **react-icons** — weather icon set (`react-icons/wi`) and social icons (`react-icons/fa`)
 - **Open-Meteo API** — weather data (no API key required)
 - **Local Storage** — persisting recent searches and theme preference
+- **Vercel** — deployment
 
 ---
 
@@ -37,8 +54,10 @@ Two endpoints are used together:
 1. **Geocoding API** — converts a city name into coordinates
    `https://geocoding-api.open-meteo.com/v1/search?name={city}`
 
-2. **Forecast API** — fetches current + 5-day weather using those coordinates
-   `https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&current=...&daily=...`
+2. **Forecast API** — fetches current, hourly, and daily weather using those coordinates
+   `https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&current=...&hourly=...&daily=...&timezone=auto`
+
+The `hourly` block returns a full week's worth of hourly data; the app calculates the current hour's index and slices out the next 12 hours for display.
 
 ---
 
@@ -48,7 +67,7 @@ Two endpoints are used together:
 src/
 │
 ├── assets/
-│   └── logo/                 # SkyCast logo
+│   └── logo/                  # SkyCast logo
 │
 ├── components/
 │   ├── Header.jsx
@@ -57,6 +76,8 @@ src/
 │   ├── WeatherCard.jsx
 │   ├── ForecastCard.jsx
 │   ├── FiveDayForecast.jsx
+│   ├── HourlyCard.jsx
+│   ├── HourlyForecast.jsx
 │   ├── RecentSearches.jsx
 │   ├── Loading.jsx
 │   ├── ErrorMessage.jsx
@@ -68,12 +89,12 @@ src/
 │   └── Home.jsx
 │
 ├── services/
-│   └── weatherApi.js          # Open-Meteo API integration
+│   └── weatherApi.js           # Open-Meteo API integration
 │
 ├── utils/
-│   ├── weatherCodes.js        # WMO weather code → icon/description mapping
-│   ├── formatDate.js          # Date formatting helpers
-│   └── recentSearches.js      # Local Storage helpers
+│   ├── weatherCodes.js         # WMO weather code → icon/description mapping
+│   ├── formatDate.js           # Date/time formatting + current-hour index helpers
+│   └── recentSearches.js       # Local Storage helpers
 │
 ├── index.css
 ├── theme.css
@@ -87,7 +108,7 @@ src/
 
 1. **Clone the repository**
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/nahy1061/skycast.git
    cd skycast
    ```
 
