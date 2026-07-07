@@ -12,24 +12,26 @@ A modern, responsive weather dashboard built with React. Search any city to see 
 <!-- Add your screenshots below -->
 
 ### Light Mode
-![SkyCast Light Mode](src\assets\screenshots\skycast-light-mode.png)
+
+![SkyCast Light Mode](src/assets/screenshots/skycast-light-mode.png)
 
 ### Dark Mode
-![SkyCast Dark Mode](src\assets\screenshots\skycast-dark-mode.png)
+
+![SkyCast Dark Mode](src/assets/screenshots/skycast-dark-mode.png)
 
 ---
 
 ## Features
 
--  **City Search** — search any city by name, with friendly error handling for invalid names and empty input
--  **Current Weather** — temperature, feels-like, humidity, wind speed, and pressure
--  **Hourly Forecast** — next 12 hours starting from the current time, with per-hour temperature, weather icon, and accurate day/night icon switching
--  **5-Day Forecast** — daily high/low temperatures with weather icons
--  **Recent Searches** — last 5 searched cities saved via Local Storage, no duplicates, click to reload
--  **Dark / Light Mode** — theme toggle with a sliding switch, persisted across sessions
--  **Animated Background** — floating cloud animation across the page
--  **Loading & Error States** — spinner while fetching, clear error messages on failure
--  **Fully Responsive** — optimized layouts for mobile, tablet, and desktop
+- **City Search** — search any city by name, with friendly error handling for invalid names and empty input
+- **Current Weather** — temperature, feels-like, humidity, wind speed, and pressure
+- **Hourly Forecast** — next 12 hours starting from the current time, with per-hour temperature, weather icon, and accurate day/night icon switching
+- **5-Day Forecast** — daily high/low temperatures with weather icons
+- **Recent Searches** — last 5 searched cities saved via Local Storage, no duplicates, click to reload
+- **Dark / Light Mode** — theme toggle with a sliding switch, persisted across sessions
+- **Animated Background** — floating cloud animation across the page
+- **Loading & Error States** — spinner while fetching, clear error messages on failure
+- **Fully Responsive** — optimized layouts for mobile, tablet, and desktop
 
 ---
 
@@ -107,20 +109,24 @@ src/
 ## 🚀 Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/nahy1061/skycast.git
    cd skycast
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Run the development server**
+
    ```bash
    npm run dev
    ```
+
    The app will be available at `http://localhost:5173`
 
 4. **Build for production**
