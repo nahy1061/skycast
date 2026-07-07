@@ -49,13 +49,15 @@ const Footer = () => {
           {/* Right: Social Icons */}
           <div className="flex gap-3 sm:gap-4 md:gap-5">
             {[
-              { Icon: FaGithub, label: "GitHub" },
-              { Icon: FaTwitter, label: "Twitter" },
-              { Icon: FaLinkedin, label: "LinkedIn" },
-            ].map(({ Icon, label }) => (
+              { Icon: FaGithub, label: "GitHub", href: "https://github.com/nahy1061" },
+              { Icon: FaTwitter, label: "Twitter", href: "https://www.linkedin.com/in/naheed-salman" },
+              { Icon: FaLinkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/naheed-salman" },
+            ].map(({ Icon, label, href }) => (
               <a
                 key={label}
-                href="#"
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label={label}
                 className={`text-sm sm:text-base transition-all duration-300 hover:scale-125 ${isDark ? "text-blue-300/60 hover:text-cyan-300" : "text-slate-600 hover:text-blue-600"}`}
               >
@@ -74,9 +76,10 @@ const Footer = () => {
         <div
           className={`text-center text-xs transition-colors duration-300 ${isDark ? "text-blue-300/50" : "text-slate-600"}`}
         >
-          <div className="flex flex-col gap-2">
-            <p> © {currentYear} SkyCast. All rights reserved.
+          <div className="flex justify-center gap-2">
+            <p> © {currentYear} SkyCast. 
           </p>
+          <p>All rights reserved.</p>
           </div>
         </div>
       </div>
